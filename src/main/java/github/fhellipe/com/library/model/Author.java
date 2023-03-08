@@ -3,21 +3,20 @@ package github.fhellipe.com.library.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="authorities")
-public class Authority {
+public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "author_id", nullable = false)
     private Long id;
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    public Author() {
+    }
 
-    public Authority(Long id, String name) {
+    public Author(Long id, String name) {
         this.id = id;
-        this.name = name;;
+        this.name = name;
     }
 
     public Long getId() {
@@ -34,13 +33,5 @@ public class Authority {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

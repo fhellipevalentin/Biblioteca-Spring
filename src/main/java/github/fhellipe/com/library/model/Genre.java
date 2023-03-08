@@ -2,22 +2,26 @@ package github.fhellipe.com.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name="authorities")
-public class Authority {
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "genre_id", nullable = false)
     private Long id;
-
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @ManyToMany(mappedBy = "genres")
+    private List<Book> book = new ArrayList<>();
 
-    public Authority(Long id, String name) {
+    public Genre() {
+    }
+
+    public Genre(Long id, String name) {
         this.id = id;
-        this.name = name;;
+        this.name = name;
     }
 
     public Long getId() {
@@ -34,13 +38,5 @@ public class Authority {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

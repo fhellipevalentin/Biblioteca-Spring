@@ -22,7 +22,6 @@ public class ProjectSecurityConfig {
         http.cors().and().csrf().disable()
                 .authorizeHttpRequests()
                     .requestMatchers("/register").permitAll()
-                    .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers("/allusers").authenticated()
                     .requestMatchers("/user").authenticated()
                 .and().formLogin()

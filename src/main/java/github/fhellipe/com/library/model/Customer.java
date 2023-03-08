@@ -39,7 +39,7 @@ public class Customer {
 
     }
 
-    public Customer(Long id, String name, String email, String mobileNumber, String pwd, String role, LocalDateTime createDt, Set<Authority> authorities) {
+    public Customer(Long id, String name, String email, String mobileNumber, String pwd, String role, LocalDateTime createDt) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -47,7 +47,6 @@ public class Customer {
         this.pwd = pwd;
         this.role = role;
         this.createDt = createDt;
-        this.authorities = authorities;
     }
 
     public Set<Authority> getAuthorities() {
