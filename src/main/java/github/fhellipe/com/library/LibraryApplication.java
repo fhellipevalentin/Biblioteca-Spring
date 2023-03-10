@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +29,11 @@ public class LibraryApplication implements CommandLineRunner {
 	@Autowired
 	private AuthorRepository authorRepository;
 
+	@Autowired
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
 	}
@@ -38,7 +46,7 @@ public class LibraryApplication implements CommandLineRunner {
 
 		authorityRepository.saveAll(Arrays.asList(auth1, auth2));
 
-		Customer c1 = new Customer(null, "Admito", "admito@example.com", "11994212145", "12345", "admin", LocalDateTime.now());
+		Customer c1 = new Customer(null, "Admito", "admito@example.com", "11994212145", passwordEncoder().encode("12345"), "admin", LocalDateTime.now());
 
 		customerRepository.saveAll(Arrays.asList(c1));
 
