@@ -11,7 +11,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id", nullable = false)
-    private Long id;
+    private Integer id;
 
     private String title;
 
@@ -29,7 +29,6 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "BOOK_GENRE",
             joinColumns = @JoinColumn(name = "book_id"),
@@ -40,7 +39,7 @@ public class Book {
         this.genres = new ArrayList<>();
     }
 
-    public Book(Long id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Author author) {
+    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Author author) {
         this.id = id;
         this.title = title;
         this.collection = collection;
@@ -50,11 +49,11 @@ public class Book {
         this.author = author;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
