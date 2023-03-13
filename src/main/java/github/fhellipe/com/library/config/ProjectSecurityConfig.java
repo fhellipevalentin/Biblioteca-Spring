@@ -29,7 +29,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/register").permitAll()
                     .requestMatchers("/allusers").authenticated()
                     .requestMatchers("/user").authenticated()
-                .requestMatchers("/api/book/**").permitAll()
+                    .requestMatchers("/api/book/**").permitAll()
+                    .requestMatchers("/api/authors/**").permitAll()
                 .and().formLogin()
                 .and().httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

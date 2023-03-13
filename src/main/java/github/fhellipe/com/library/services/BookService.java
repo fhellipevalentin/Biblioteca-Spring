@@ -6,6 +6,7 @@ import github.fhellipe.com.library.repository.BookRepository;
 import github.fhellipe.com.library.repository.GenreRepository;
 import github.fhellipe.com.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,9 +22,6 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
-    @Autowired
-    private GenreRepository genreRepository;
-
     public Book findById(Integer id) {
         Optional<Book> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -34,4 +32,14 @@ public class BookService {
         Pageable pageable = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);;
         return repository.findAll(pageable);
     }
+    public void delete(Integer id) {
+        findById(id);
+        try {
+            repository.deleteById(id);
+        }
+        catch (ObjectNotFoundException e) {
+            throw new ObjectNotFoundException("Não foi possível encontrar o Livro especificado" + id);
+        }
+    }
+
 }

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -75,21 +76,21 @@ public class LibraryApplication implements CommandLineRunner {
 		genreRepository.saveAll(Arrays.asList(genre1, genre2, genre3, genre4));
 
 
-		Book b1 = new Book(null, "Juridico e Minha vida", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a1);
-		Book b2 = new Book(null, "As Cronicas do Comércio", "Economia sec XXI", 1, LocalDateTime.parse("02/02/2002 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("01/05/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a2);
-		Book b3 = new Book(null, "Suits, uma lição para a Vida", null, 1, LocalDateTime.parse("05/10/2019 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("12/07/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a3);
-		Book b4 = new Book(null, "O Júri", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a4);
-		Book b5 = new Book(null, "O Primeiro Ano: Como Se Faz Um Advogado",null, 5, LocalDateTime.parse("11/04/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a5);
-		Book b6 = new Book(null, "Justiça: o que é a coisa certa a fazer", null, 2, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a6);
-		Book b7 = new Book(null, "Contra o sistema da corrupção", null, 10, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a7);
-		Book b8 = new Book(null, "Desapropriação", null, 12, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a8);
-		Book b9 = new Book(null, "Manual de Direito Penal", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a9);
-		Book b10 = new Book(null, "Direito Civil Brasileiro", null, 3, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a10);
-		Book b11 = new Book(null, "Direito Digital e Proteção de Dados", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a11);
-		Book b12 = new Book(null, "Clóvis Beviláqua: sua vida, sua obra", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a12);
-		Book b13 = new Book(null, "Ação Humana", "Mises", 7, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a13);
-		Book b14 = new Book(null, "The Theory of Money and Credit", "Mises", 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a13);
-		Book b15 = new Book(null, "A Teoria Comunista do Direito", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a14);
+		Book b1 = new Book(null, "Juridico e Minha vida", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a1, Instant.now());
+		Book b2 = new Book(null, "As Cronicas do Comércio", "Economia sec XXI", 1, LocalDateTime.parse("02/02/2002 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("01/05/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a2, Instant.now());
+		Book b3 = new Book(null, "Suits, uma lição para a Vida", null, 1, LocalDateTime.parse("05/10/2019 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("12/07/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a3, Instant.now());
+		Book b4 = new Book(null, "O Júri", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a4, Instant.now());
+		Book b5 = new Book(null, "O Primeiro Ano: Como Se Faz Um Advogado",null, 5, LocalDateTime.parse("11/04/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a5, Instant.now());
+		Book b6 = new Book(null, "Justiça: o que é a coisa certa a fazer", null, 2, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a6, Instant.now());
+		Book b7 = new Book(null, "Contra o sistema da corrupção", null, 10, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a7, Instant.now());
+		Book b8 = new Book(null, "Desapropriação", null, 12, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a8, Instant.now());
+		Book b9 = new Book(null, "Manual de Direito Penal", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a9, Instant.now());
+		Book b10 = new Book(null, "Direito Civil Brasileiro", null, 3, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a10, Instant.now());
+		Book b11 = new Book(null, "Direito Digital e Proteção de Dados", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a11, Instant.now());
+		Book b12 = new Book(null, "Clóvis Beviláqua: sua vida, sua obra", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a12, Instant.now());
+		Book b13 = new Book(null, "Ação Humana", "Mises", 7, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a13, Instant.now());
+		Book b14 = new Book(null, "The Theory of Money and Credit", "Mises", 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a13, Instant.now());
+		Book b15 = new Book(null, "A Teoria Comunista do Direito", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), a14, Instant.now());
 
 		b1.getGenres().add(genre3);
 		b2.getGenres().add(genre1);

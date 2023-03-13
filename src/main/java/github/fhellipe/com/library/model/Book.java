@@ -2,6 +2,8 @@ package github.fhellipe.com.library.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,8 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
+    private Instant instant;
+
     @ManyToMany
     @JoinTable(name = "BOOK_GENRE",
             joinColumns = @JoinColumn(name = "book_id"),
@@ -39,7 +43,7 @@ public class Book {
         this.genres = new ArrayList<>();
     }
 
-    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Author author) {
+    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Author author, Instant instant) {
         this.id = id;
         this.title = title;
         this.collection = collection;
@@ -47,6 +51,7 @@ public class Book {
         this.publicationDate = publicationDate;
         this.manufacturingDate = manufacturingDate;
         this.author = author;
+        this.instant = instant;
     }
 
     public Integer getId() {
@@ -111,5 +116,13 @@ public class Book {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
+    }
+
+    public Instant getInstant() {
+        return instant;
+    }
+
+    public void setInstant(Instant instant) {
+        this.instant = instant;
     }
 }
