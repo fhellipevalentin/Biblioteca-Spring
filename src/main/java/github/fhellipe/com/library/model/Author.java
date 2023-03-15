@@ -1,6 +1,10 @@
 package github.fhellipe.com.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Author {
@@ -10,6 +14,8 @@ public class Author {
     private Long id;
 
     private String name;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books = new ArrayList<>();
 
     public Author() {
     }
@@ -33,5 +39,13 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

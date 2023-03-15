@@ -26,11 +26,12 @@ public class ProjectSecurityConfig {
 
         http.csrf().disable()
                 .authorizeHttpRequests()
-                    .requestMatchers("/register").permitAll()
+
+                .requestMatchers("/api/book/**").authenticated()
+                .requestMatchers("/api/authors/**").authenticated()
+                .requestMatchers("/register").authenticated()
                     .requestMatchers("/allusers").authenticated()
                     .requestMatchers("/user").authenticated()
-                    .requestMatchers("/api/book/**").permitAll()
-                    .requestMatchers("/api/authors/**").permitAll()
                 .and().formLogin()
                 .and().httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

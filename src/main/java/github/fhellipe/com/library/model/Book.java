@@ -27,12 +27,12 @@ public class Book {
     @Column(name = "manufacturing_date")
     private LocalDateTime manufacturingDate;
 
-    @OneToOne
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
     private Instant instant;
-
     @ManyToMany
     @JoinTable(name = "BOOK_GENRE",
             joinColumns = @JoinColumn(name = "book_id"),
