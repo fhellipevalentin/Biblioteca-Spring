@@ -1,7 +1,10 @@
 package github.fhellipe.com.library;
 
-import github.fhellipe.com.library.model.*;
-import github.fhellipe.com.library.repository.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,10 +12,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
+import github.fhellipe.com.library.model.Author;
+import github.fhellipe.com.library.model.Authority;
+import github.fhellipe.com.library.model.Book;
+import github.fhellipe.com.library.model.Customer;
+import github.fhellipe.com.library.model.Genre;
+import github.fhellipe.com.library.repository.AuthorRepository;
+import github.fhellipe.com.library.repository.AuthorityRepository;
+import github.fhellipe.com.library.repository.BookRepository;
+import github.fhellipe.com.library.repository.CustomerRepository;
+import github.fhellipe.com.library.repository.GenreRepository;
 
 @SpringBootApplication
 public class LibraryApplication implements CommandLineRunner {
