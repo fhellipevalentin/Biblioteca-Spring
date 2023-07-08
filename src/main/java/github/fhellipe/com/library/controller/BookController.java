@@ -1,8 +1,6 @@
 package github.fhellipe.com.library.controller;
 
-import github.fhellipe.com.library.controller.utils.URL;
 import github.fhellipe.com.library.model.Book;
-import github.fhellipe.com.library.model.Genre;
 import github.fhellipe.com.library.repository.BookRepository;
 import github.fhellipe.com.library.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/book")
