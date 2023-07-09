@@ -27,8 +27,10 @@ public class ProjectSecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests()
 
-                .requestMatchers("/api/book/**").authenticated()
-                .requestMatchers("/api/authors/**").authenticated()
+                .requestMatchers("/api/book/**").permitAll()
+                .requestMatchers("/api/genres/**").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/api/authors/**").permitAll()
                 .requestMatchers("/register").authenticated()
                     .requestMatchers("/allusers").authenticated()
                     .requestMatchers("/user").authenticated()

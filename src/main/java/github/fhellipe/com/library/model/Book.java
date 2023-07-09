@@ -27,8 +27,7 @@ public class Book {
     @Column(name = "manufacturing_date")
     private LocalDateTime manufacturingDate;
 
-    @JsonIgnore
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
