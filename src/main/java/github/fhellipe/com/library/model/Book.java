@@ -27,9 +27,11 @@ public class Book {
     @Column(name = "manufacturing_date")
     private LocalDateTime manufacturingDate;
 
-    @OneToOne
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @ManyToMany
+    @JoinTable(name = "BOOK_AUTHOR",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> authors = new ArrayList<>();
 
     private Instant instant;
     @ManyToMany
@@ -40,16 +42,16 @@ public class Book {
 
     public Book() {
         this.genres = new ArrayList<>();
+        this.authors = new ArrayList<>();
     }
 
-    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Author author, Instant instant) {
+    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Instant instant) {
         this.id = id;
         this.title = title;
         this.collection = collection;
         this.quantity = quantity;
         this.publicationDate = publicationDate;
         this.manufacturingDate = manufacturingDate;
-        this.author = author;
         this.instant = instant;
     }
 
@@ -93,20 +95,20 @@ public class Book {
         this.publicationDate = publicationDate;
     }
 
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
     public LocalDateTime getManufacturingDate() {
         return manufacturingDate;
     }
 
     public void setManufacturingDate(LocalDateTime manufacturingDate) {
         this.manufacturingDate = manufacturingDate;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
     }
 
     public List<Genre> getGenres() {
