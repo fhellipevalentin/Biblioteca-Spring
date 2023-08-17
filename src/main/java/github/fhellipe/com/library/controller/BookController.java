@@ -50,4 +50,10 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PutMapping("/{id}")
+    public Book editBook(@PathVariable Integer id, @RequestBody Book book) {
+        return service.update(id, book);
+    }
+
 }

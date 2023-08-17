@@ -42,4 +42,20 @@ public class BookService {
         }
     }
 
+    public Book update(Integer id, Book book) {
+        return repository.findById(id)
+                .map(recordFound -> {
+                    recordFound.setTitle(book.getTitle());
+                    recordFound.setQuantity(book.getQuantity());
+                    recordFound.setCollection(book.getCollection());
+                    recordFound.setAuthors(book.getAuthors());
+                    recordFound.setGenres(book.getGenres());
+                    recordFound.setManufacturingDate(book.getManufacturingDate());
+                    recordFound.setPublicationDate(book.getPublicationDate());
+                    return repository.save(recordFound);
+                }).orElseThrow(() -> new ObjectNotFoundException("Não foi possivel encontrar o Livro especificado" + id));
+
+    }
+
+
 }
