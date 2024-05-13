@@ -33,19 +33,7 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors = new ArrayList<>();
 
-    private Instant instant;
-    @ManyToMany
-    @JoinTable(name = "BOOK_GENRE",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private List<Genre> genres = new ArrayList<>();
-
-    public Book() {
-        this.genres = new ArrayList<>();
-        this.authors = new ArrayList<>();
-    }
-
-    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Instant instant) {
+    public Book(Integer id, String title, String collection, Integer quantity, LocalDateTime publicationDate, LocalDateTime manufacturingDate, Instant instant, String genre1, String genre2, String genre3) {
         this.id = id;
         this.title = title;
         this.collection = collection;
@@ -53,6 +41,45 @@ public class Book {
         this.publicationDate = publicationDate;
         this.manufacturingDate = manufacturingDate;
         this.instant = instant;
+        this.genre1 = genre1;
+        this.genre2 = genre2;
+        this.genre3 = genre3;
+    }
+
+    private Instant instant;
+
+    private String genre1;
+
+    private String genre2;
+
+    private String genre3;
+
+    public String getGenre1() {
+        return genre1;
+    }
+
+    public void setGenre1(String genre1) {
+        this.genre1 = genre1;
+    }
+
+    public String getGenre2() {
+        return genre2;
+    }
+
+    public void setGenre2(String genre2) {
+        this.genre2 = genre2;
+    }
+
+    public String getGenre3() {
+        return genre3;
+    }
+
+    public void setGenre3(String genre3) {
+        this.genre3 = genre3;
+    }
+
+    public Book() {
+        this.authors = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -109,14 +136,6 @@ public class Book {
 
     public void setManufacturingDate(LocalDateTime manufacturingDate) {
         this.manufacturingDate = manufacturingDate;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
     }
 
     public Instant getInstant() {

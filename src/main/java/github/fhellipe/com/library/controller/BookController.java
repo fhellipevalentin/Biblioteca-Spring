@@ -41,7 +41,7 @@ public class BookController {
     @PostMapping("/add")
     public Book registerBook(@RequestBody Book book ) {
         book.setInstant(Instant.now());
-        return bookRepository.save(book);
+        return bookRepository.save(book); // implementa isso aq depois
     }
     @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping("/{id}")
@@ -51,7 +51,7 @@ public class BookController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public Book editBook(@PathVariable Integer id, @RequestBody Book book) {
         return service.update(id, book);
     }

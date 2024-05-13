@@ -1,19 +1,15 @@
 package github.fhellipe.com.library.services;
 
 import github.fhellipe.com.library.model.Book;
-import github.fhellipe.com.library.model.Genre;
 import github.fhellipe.com.library.repository.BookRepository;
-import github.fhellipe.com.library.repository.GenreRepository;
 import github.fhellipe.com.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,7 +45,9 @@ public class BookService {
                     recordFound.setQuantity(book.getQuantity());
                     recordFound.setCollection(book.getCollection());
                     recordFound.setAuthors(book.getAuthors());
-                    recordFound.setGenres(book.getGenres());
+                    recordFound.setGenre1(book.getGenre1());
+                    recordFound.setGenre2(book.getGenre2());
+                    recordFound.setGenre3(book.getGenre3());
                     recordFound.setManufacturingDate(book.getManufacturingDate());
                     recordFound.setPublicationDate(book.getPublicationDate());
                     return repository.save(recordFound);

@@ -16,12 +16,10 @@ import github.fhellipe.com.library.model.Author;
 import github.fhellipe.com.library.model.Authority;
 import github.fhellipe.com.library.model.Book;
 import github.fhellipe.com.library.model.Customer;
-import github.fhellipe.com.library.model.Genre;
 import github.fhellipe.com.library.repository.AuthorRepository;
 import github.fhellipe.com.library.repository.AuthorityRepository;
 import github.fhellipe.com.library.repository.BookRepository;
 import github.fhellipe.com.library.repository.CustomerRepository;
-import github.fhellipe.com.library.repository.GenreRepository;
 
 @SpringBootApplication
 public class LibraryApplication implements CommandLineRunner {
@@ -32,8 +30,6 @@ public class LibraryApplication implements CommandLineRunner {
 	private AuthorityRepository authorityRepository;
 	@Autowired
 	private BookRepository bookRepository;
-	@Autowired
-	private GenreRepository genreRepository;
 	@Autowired
 	private AuthorRepository authorRepository;
 
@@ -75,29 +71,22 @@ public class LibraryApplication implements CommandLineRunner {
 
 		authorRepository.saveAll(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14));
 
-		Genre genre1 = new Genre(null, "Economia");
-		Genre genre2 = new Genre(null, "Teórico");
-		Genre genre3 = new Genre(null, "Literatura Jurídica");
-		Genre genre4 = new Genre(null, "Biografias");
 
-		genreRepository.saveAll(Arrays.asList(genre1, genre2, genre3, genre4));
-
-
-		Book b1 = new Book(null, "Juridico e Minha vida", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b2 = new Book(null, "As Cronicas do Comércio", "Economia sec XXI", 1, LocalDateTime.parse("02/02/2002 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("01/05/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b3 = new Book(null, "Suits, uma lição para a Vida", null, 1, LocalDateTime.parse("05/10/2019 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("12/07/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b4 = new Book(null, "O Júri", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b5 = new Book(null, "O Primeiro Ano: Como Se Faz Um Advogado",null, 5, LocalDateTime.parse("11/04/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b6 = new Book(null, "Justiça: o que é a coisa certa a fazer", null, 2, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b7 = new Book(null, "Contra o sistema da corrupção", null, 10, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b8 = new Book(null, "Desapropriação", null, 12, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b9 = new Book(null, "Manual de Direito Penal", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b10 = new Book(null, "Direito Civil Brasileiro", null, 3, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b11 = new Book(null, "Direito Digital e Proteção de Dados", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b12 = new Book(null, "Clóvis Beviláqua: sua vida, sua obra", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b13 = new Book(null, "Ação Humana", "Mises", 7, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b14 = new Book(null, "The Theory of Money and Credit", "Mises", 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
-		Book b15 = new Book(null, "A Teoria Comunista do Direito", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now());
+		Book b1 = new Book(null, "Juridico e Minha vida", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b2 = new Book(null, "As Cronicas do Comércio", "Economia sec XXI", 1, LocalDateTime.parse("02/02/2002 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("01/05/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b3 = new Book(null, "Suits, uma lição para a Vida", null, 1, LocalDateTime.parse("05/10/2019 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("12/07/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b4 = new Book(null, "O Júri", null, 1, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("22/11/2022 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b5 = new Book(null, "O Primeiro Ano: Como Se Faz Um Advogado",null, 5, LocalDateTime.parse("11/04/2010 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b6 = new Book(null, "Justiça: o que é a coisa certa a fazer", null, 2, LocalDateTime.parse("02/02/2021 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b7 = new Book(null, "Contra o sistema da corrupção", null, 10, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b8 = new Book(null, "Desapropriação", null, 12, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b9 = new Book(null, "Manual de Direito Penal", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b10 = new Book(null, "Direito Civil Brasileiro", null, 3, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b11 = new Book(null, "Direito Digital e Proteção de Dados", null, 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b12 = new Book(null, "Clóvis Beviláqua: sua vida, sua obra", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b13 = new Book(null, "Ação Humana", "Mises", 7, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b14 = new Book(null, "The Theory of Money and Credit", "Mises", 2, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
+		Book b15 = new Book(null, "A Teoria Comunista do Direito", null, 1, LocalDateTime.parse("10/04/2018 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), LocalDateTime.parse("10/10/2015 00:00:00", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), Instant.now(), null, null, null);
 
 		b1.getAuthors().add(a1);
 		b2.getAuthors().add(a2);
@@ -112,24 +101,9 @@ public class LibraryApplication implements CommandLineRunner {
 		b11.getAuthors().add(a11);
 		b12.getAuthors().add(a12);
 		b13.getAuthors().add(a13);
+		b13.getAuthors().add(a14);
 		b14.getAuthors().add(a14);
 		b15.getAuthors().add(a14);
-
-		b1.getGenres().add(genre3);
-		b2.getGenres().add(genre1);
-		b3.getGenres().add(genre2);
-		b4.getGenres().add(genre3);
-		b5.getGenres().add(genre2);
-		b6.getGenres().add(genre2);
-		b7.getGenres().add(genre4);
-		b8.getGenres().add(genre2);
-		b9.getGenres().add(genre2);
-		b10.getGenres().add(genre2);
-		b11.getGenres().add(genre2);
-		b12.getGenres().add(genre4);
-		b13.getGenres().add(genre1);
-		b14.getGenres().add(genre1);
-		b15.getGenres().add(genre3);
 
 		bookRepository.saveAll(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15));
 
